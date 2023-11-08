@@ -14,10 +14,30 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'mysql:mysql-connector-java:8.0.30'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation 'com.codeborne:selenide:6.18.0'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+//    testImplementation 'com.github.harryemartland:queryrunner:1.4.1'
+//    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+//    testImplementation 'com.codeborne:selenide:6.18.0'
+//    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+//    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
+//    compileOnly 'org.projectlombok:lombok:1.18.30'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+//
+//    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
 
 test {
     useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+    systemProperty 'db.url', System.getProperty('db.url', "jdbc:mysql://localhost:3306/app")
 }
